@@ -2,14 +2,14 @@ import random
 # library that we use in order to choose
 # on random words from a list of words
 
-name = input("What is your name? ")
+#name = input("What is your name? ")
 # Here the user is asked to enter the name first
 
-print("Good Luck ! ", name)
+#print("Good Luck ! ", name)
 
-words = ['rainbow', 'computer', 'science', 'programming',
-    'python', 'mathematics', 'player', 'condition',
-    'reverse', 'water', 'board', 'geeks']
+words = ['Christian Koloko', 'Armoni Brooks', 'OG Anunoby', 'Scottie Barnes',
+    'Precious Achiuwa', 'Justine Champagnie', 'David Johnson', 'Svi Mykhailiuk',
+    'Isaac Bonga', 'Yuta Watanabe', 'Thaddeus Young', 'Malachi Flynn', 'Fred VanVleet', 'Khem Birch', 'Chris Boucher', 'Gary Trent Jr.', 'Pascal Siakam', 'Dalano Banton']
 
 # Function will choose one random
 # word from this list of words
@@ -36,11 +36,11 @@ while turns > 0:
     # comparing that character with
     # the character in guesses
     if char in guesses:
-      print(char, end=" ")
+      print(char)
 
     else:
       print("_")
-      print(char, end=" ")
+      #print(char, end=" ")
 
       # for every failure 1 will be
       # incremented in failure
