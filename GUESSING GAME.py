@@ -79,10 +79,9 @@ while user_continue == ("y") or user_continue == ("Y"):
       print("You have", + turns, 'more guesses\n')
 
       if turns == 0:
-        print("You Loose")
+        print("You Lose")
 
   user_continue = input("Would you like to play again? [y/n]? ")
   
-  if user_continue == "n" or user_continue == "N":
-    print("Good Bye!")
-    break
+if user_continue == "n" or user_continue == "N":
+  print("Good Bye, thanks for playing!")
