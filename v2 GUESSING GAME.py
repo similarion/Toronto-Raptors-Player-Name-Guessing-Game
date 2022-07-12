@@ -1,9 +1,7 @@
-from turtle import end_fill
-
+valid_responses = ('y', 'Y', 'n', 'N')
 
 user_continue = 'y'
-while user_continue == ("y") or user_continue == ("Y"):
-
+while user_continue == ('y' or 'Y'):
     import random
 
     words = ['Christian Koloko', 'Armoni Brooks', 'OG Anunoby', 'Scottie Barnes',
@@ -35,7 +33,7 @@ while user_continue == ("y") or user_continue == ("Y"):
 
         return 1
 
-    num_turns = len(word)
+    num_turns = 10
     for i in range(-1, num_turns):
         guess = input('Guess a letter:')
 
@@ -51,17 +49,16 @@ while user_continue == ("y") or user_continue == ("Y"):
             print('Congratulations you won')
             break
 
-        print('You have '+str(num_turns - i)+' turns left.')
+        print('You have '+str(num_turns - i - 1)+' tries left.')
         print()
 
     print("Game Over")
     user_continue = input("Would you like to play again? [y/n]? ")
     
-    if user_continue == ("n" or "N"):
+    if user_continue == ('n' or 'N'):
         print("Good Bye, thanks for playing!")
         exit
 
-    else: 
-        user_continue != ("y" or "Y" or "n" or "N")
+    if not user_continue in valid_responses:
         print("Invalid Answer (y/n only)")
         continue
