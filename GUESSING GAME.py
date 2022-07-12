@@ -1,4 +1,5 @@
-while True:
+user_continue = 'y'
+while user_continue == ("y") or user_continue == ("Y"):
 
   import random
 # library that we use in order to choose
@@ -37,11 +38,11 @@ while True:
     # comparing that character with
     # the character in guesses
       if char.casefold() in guesses:
-        print(char)
+        print(char, end='')
 
       else:
-        print("_")
-      #print(char, end=" ")
+        print("_", end='')
+      #print(char)
 
       # for every failure 1 will be
       # incremented in failure
@@ -59,7 +60,7 @@ while True:
   # if user has input the wrong alphabet then
   # it will ask user to enter another alphabet
     print()
-    guess = input("guess a character:")
+    guess = input("Guess a character:")
 
   # every input character will be stored in guesses
     guesses += guess
@@ -75,15 +76,13 @@ while True:
 
     # this will print the number of
     # turns left for the user
-      print("You have", + turns, 'more guesses')
+      print("You have", + turns, 'more guesses\n')
 
       if turns == 0:
         print("You Loose")
 
   user_continue = input("Would you like to play again? [y/n]? ")
-  if user_continue == ("y"):
-    continue
   
-  elif user_continue == "n":
-      print("Good Bye!")
-      break
+  if user_continue == "n" or user_continue == "N":
+    print("Good Bye!")
+    break
