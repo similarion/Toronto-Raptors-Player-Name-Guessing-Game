@@ -18,14 +18,12 @@ while True:
 # word from this list of words
   word = random.choice(words)
 
-
   print("Guess the characters")
 
   guesses = ''
 
 # any number of turns can be used here
   turns = 12
-
 
   while turns > 0:
 
