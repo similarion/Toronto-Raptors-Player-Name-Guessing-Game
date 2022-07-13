@@ -7,8 +7,9 @@ def main():
         'Khem Birch', 'Chris Boucher', 'Gary Trent Jr.', 'Pascal Siakam', 'Dalano Banton']
 
     word = random.choice(words)
-
     spaces = ['_']* len(word)
+    print(spaces)
+    print('You have 10 guesses.')
 
     def get_letter_position(guess, word, spaces):
         index = -2
@@ -23,6 +24,7 @@ def main():
 
         return (word, spaces)
 
+    #function to check if user guessed all the letters in the word
     def win_check():
         for i in range(0, len(spaces)):
             if spaces[i] == '_':
@@ -30,16 +32,21 @@ def main():
 
         return 1
 
-    num_turns = 3
+    #how many guesses users get
+    num_turns = 10
+    alphabet = []
     for i in range(-1, num_turns):
         guess = input('Guess a letter:').lower()
+        alphabet.append(guess)
 
         if guess in word:
             word, spaces = get_letter_position(guess, word, spaces)
             print(spaces)
+            print("Used letters:",alphabet)
         else:
             print(spaces)
             print('Sorry that letter is not in the name.')
+            print("Used letters:",alphabet)
 
         if win_check() == 1:
             print(spaces)
@@ -49,15 +56,19 @@ def main():
         print('You have '+str(num_turns - i - 1)+' tries left.')
         print()
 
-    print("Game Over")
-    user_continue = str(input("Would you like to play again? [y/n]? ").lower())
-    
-    if user_continue == 'y':
-        main()
-    if user_continue == 'n':
-        print("Good Bye, thanks for playing!")
-        exit
-    elif user_continue not in ('y', 'n'):
-        print("Invalid Answer (y/n only)")
-        user_continue = str(input("Would you like to play again? [y/n]? ").lower())
 main()
+
+while True:
+    try:
+        print("Game Over")
+        user_continue = str(input("Would you like to play again? [y/n]? ").lower())
+        
+        if user_continue == 'y':
+            main()
+        if user_continue == 'n':
+            print("Good Bye, thanks for playing!")
+            break
+        if user_continue not in ('y', 'n'):
+            print("Invalid Answer (y/n only)")
+    except:
+        continue
