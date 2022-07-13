@@ -1,7 +1,4 @@
-valid_responses = ('y', 'Y', 'n', 'N')
-
-user_continue = 'y'
-while user_continue == ('y' or 'Y'):
+def main():
     import random
 
     words = ['Christian Koloko', 'Armoni Brooks', 'OG Anunoby', 'Scottie Barnes',
@@ -33,9 +30,9 @@ while user_continue == ('y' or 'Y'):
 
         return 1
 
-    num_turns = 10
+    num_turns = 3
     for i in range(-1, num_turns):
-        guess = input('Guess a letter:')
+        guess = input('Guess a letter:').lower()
 
         if guess in word:
             word, spaces = get_letter_position(guess, word, spaces)
@@ -53,12 +50,14 @@ while user_continue == ('y' or 'Y'):
         print()
 
     print("Game Over")
-    user_continue = input("Would you like to play again? [y/n]? ")
+    user_continue = str(input("Would you like to play again? [y/n]? ").lower())
     
-    if user_continue == ('n' or 'N'):
+    if user_continue == 'y':
+        main()
+    if user_continue == 'n':
         print("Good Bye, thanks for playing!")
         exit
-
-    if not user_continue in valid_responses:
+    elif user_continue not in ('y', 'n'):
         print("Invalid Answer (y/n only)")
-        continue
+        user_continue = str(input("Would you like to play again? [y/n]? ").lower())
+main()
