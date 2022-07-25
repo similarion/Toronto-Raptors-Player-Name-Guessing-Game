@@ -1,15 +1,17 @@
 def main():
     import random
 
-    words = ['Christian Koloko', 'Armoni Brooks', 'OG Anunoby', 'Scottie Barnes',
-        'Precious Achiuwa', 'Justine Champagnie', 'David Johnson', 'Svi Mykhailiuk',
-        'Isaac Bonga', 'Yuta Watanabe', 'Thaddeus Young', 'Malachi Flynn', 'Fred VanVleet',
-        'Khem Birch', 'Chris Boucher', 'Gary Trent Jr.', 'Pascal Siakam', 'Dalano Banton']
+    words = ['Khem Birch']
+    #'Armoni Brooks', 'OG Anunoby', 'Scottie Barnes',
+        #'Precious Achiuwa', 'Justine Champagnie', 'David Johnson', 'Svi Mykhailiuk',
+        #'Isaac Bonga', 'Yuta Watanabe', 'Thaddeus Young', 'Malachi Flynn', 'Fred VanVleet',
+        #'Christian Koloko', 'Chris Boucher', 'Gary Trent Jr.', 'Pascal Siakam', 'Dalano Banton']
 
-    word = random.choice(words)
-    spaces = ['_']* len(word)
+    word_with_space = random.choice(words)
+    word = word_with_space.replace(" ", "")
+    spaces = ['_']* (len(word))
     print(spaces)
-    print('You have 10 guesses.')
+    print('You have', len(word)+5, 'guesses.')
 
     def get_letter_position(guess, word, spaces):
         index = -2
@@ -21,7 +23,7 @@ def main():
                 spaces[index] = guess
             else:
                 index = -1
-
+                
         return (word, spaces)
 
     #function to check if user guessed all the letters in the word
@@ -33,15 +35,16 @@ def main():
         return 1
 
     #how many guesses users get
-    num_turns = 10
+    num_turns = len(word)+4
     alphabet = []
     for i in range(-1, num_turns):
-        guess = input('Guess a letter:').lower()
+        guess = input('Guess a letter:')
         alphabet.append(guess)
 
         if guess in word:
             word, spaces = get_letter_position(guess, word, spaces)
             print(spaces)
+            print('There is the letter,', guess, ', in the name')
             print("Used letters:",alphabet)
         else:
             print(spaces)
@@ -50,7 +53,7 @@ def main():
 
         if win_check() == 1:
             print(spaces)
-            print('Congratulations you won')
+            print('Congratulations you won! The name was:', word_with_space, '!')
             break
 
         print('You have '+str(num_turns - i - 1)+' tries left.')
@@ -60,7 +63,7 @@ main()
 
 while True:
     try:
-        print("Game Over")
+        print("Game Over!")
         user_continue = str(input("Would you like to play again? [y/n]? ").lower())
         
         if user_continue == 'y':
