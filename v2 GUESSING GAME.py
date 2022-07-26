@@ -1,14 +1,14 @@
 def main():
     import random
 
-    words = ['Khem Birch']
-    #'Armoni Brooks', 'OG Anunoby', 'Scottie Barnes',
-        #'Precious Achiuwa', 'Justine Champagnie', 'David Johnson', 'Svi Mykhailiuk',
-        #'Isaac Bonga', 'Yuta Watanabe', 'Thaddeus Young', 'Malachi Flynn', 'Fred VanVleet',
-        #'Christian Koloko', 'Chris Boucher', 'Gary Trent Jr.', 'Pascal Siakam', 'Dalano Banton']
+    words = ['Khem Birch',
+        'Armoni Brooks', 'OG Anunoby', 'Scottie Barnes',
+        'Precious Achiuwa', 'Justine Champagnie', 'David Johnson', 'Svi Mykhailiuk',
+        'Isaac Bonga', 'Yuta Watanabe', 'Thaddeus Young', 'Malachi Flynn', 'Fred VanVleet',
+        'Christian Koloko', 'Chris Boucher', 'Gary Trent Jr.', 'Pascal Siakam', 'Dalano Banton']
 
     word_with_space = random.choice(words)
-    word = word_with_space.replace(" ", "")
+    word = word_with_space.replace(" ", "").lower()
     spaces = ['_']* (len(word))
     print(spaces)
     print('You have', len(word)+5, 'guesses.')
@@ -41,12 +41,14 @@ def main():
         guess = input('Guess a letter:')
         alphabet.append(guess)
 
-        if guess in word:
+        if len(guess) > 1:
+            print('Please guess only 1 letter.')
+        if guess in word and len(guess) == 1:
             word, spaces = get_letter_position(guess, word, spaces)
             print(spaces)
             print('There is the letter,', guess, ', in the name')
             print("Used letters:",alphabet)
-        else:
+        elif len(guess) == 1:
             print(spaces)
             print('Sorry that letter is not in the name.')
             print("Used letters:",alphabet)
@@ -60,7 +62,7 @@ def main():
         print()
 
 main()
-
+    
 while True:
     try:
         print("Game Over!")
